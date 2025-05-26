@@ -1,0 +1,1473 @@
+/* --- Variables & Base Styles --- */
+:root {
+    --primary-color: #007bff; /* A vibrant blue for highlights */
+    --secondary-color: #6c757d; /* A muted gray for secondary text */
+    --dark-bg: #1a1a1a; /* Dark background for sections */
+    --light-bg: #2a2a2a; /* Slightly lighter dark background */
+    --text-color-light: #f4f4f4; /* Light text for dark backgrounds */
+    --text-color-dark: #333; /* Dark text for light backgrounds (if any, used sparingly) */
+    --border-color: #333;
+    --heading-font: 'Poppins', sans-serif;
+    --body-font: 'Open Sans', sans-serif;
+
+    /* Custom button variables from Uiverse.io for Resume button */
+    --btn-color: #00A97F; /* Green for the unique button effect (Resume button) */
+    --btn-color2: rgb(10, 25, 30); /* Dark color for text on hover for unique button */
+
+    /* Variables for the 'View My Work' button (uiverse-btn) */
+    --uiverse-btn-bg-light: #3d3434; /* Light background for the new button */
+    --uiverse-btn-text-dark: #3d0000; /* Dark text for the new button */
+    --uiverse-btn-hover-bg-dark: #212121; /* Dark hover background for the new button */
+    --uiverse-btn-hover-text-light: #e8e8e8; /* Light hover text for the new button */
+}
+
+/* Dark mode specific variables */
+body.dark-mode {
+    --primary-color: #82aaff; /* Lighter blue for dark mode primary */
+    --secondary-color: #b0b0b0;
+    --dark-bg: #0d1117; /* Even darker background for dark mode */
+    --light-bg: #161b22; /* Slightly lighter dark background for dark mode */
+    --text-color-light: #e6edf3;
+    --text-color-dark: #e6edf3; /* Dark text becomes light in dark mode */
+    --border-color: #30363d;
+    --uiverse-btn-bg-light: #e8e8e8; /* Keep original for contrast or adjust */
+    --uiverse-btn-text-dark: #212121;
+    --uiverse-btn-hover-bg-dark: #212121;
+    --uiverse-btn-hover-text-light: #e8e8e8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-color-light);
+    background-color: var(--light-bg);
+    overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark mode */
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 25px;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3; /* Darker primary color on hover */
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--text-color-light);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.8rem; }
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.bg-dark {
+    background-color: var(--dark-bg);
+}
+
+/* --- Buttons (Standard Style for Send Message button) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8em 1.75em;
+    background-color: var(--primary-color); /* Solid background by default */
+    color: var(--text-color-light);
+    border-radius: 6px;
+    border: none; /* No border for the standard button */
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: var(--heading-font);
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker primary color on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.btn:active {
+    transform: scale(.98); /* Click effect */
+    filter: brightness(.9); /* Slightly dim on active */
+}
+
+.btn i {
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover i {
+    transform: translateX(3px); /* Move icon slightly on hover */
+}
+
+/* --- New Uiverse.io Button for "View My Work" --- */
+.uiverse-btn {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: var(--uiverse-btn-text-dark); /* Initial text color */
+    z-index: 1;
+    background: var(--uiverse-btn-bg-light); /* Initial background */
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    cursor: pointer; /* Ensure cursor is pointer */
+    font-family: var(--heading-font); /* Apply your heading font */
+    text-transform: uppercase; /* Make it uppercase like your other buttons */
+}
+
+.uiverse-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: var(--uiverse-btn-hover-bg-dark); /* Slide-in background color */
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(126, 121, 121, 0.27);
+    transition: all 250ms;
+}
+
+.uiverse-btn:hover {
+    color: var(--uiverse-btn-hover-text-light); /* Text color on hover */
+}
+
+.uiverse-btn:hover::before {
+    width: 100%;
+}
+
+/* --- Small button style (kept simpler for project links) --- */
+.btn-small {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 8px 18px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-small:hover {
+    background: #0056b3;
+}
+
+
+/* --- Header & Navigation --- */
+header {
+    background: rgba(42, 42, 42, 0.95); /* Semi-transparent dark background */
+    backdrop-filter: blur(5px); /* Modern blur effect */
+    color: var(--text-color-light);
+    padding: 1.2rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 25px;
+}
+
+#main-nav .logo {
+    color: var(--text-color-light);
+    font-family: var(--heading-font);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+/* Corrected styling for nav-links to push to the far right */
+.nav-links { /* Used the new class 'nav-links' from index.html */
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows the ul to take up remaining space */
+    justify-content: flex-end; /* Pushes content to the far right */
+    gap: 30px; /* Provides consistent spacing between nav items */
+}
+
+.nav-links li { /* Changed from #main-nav ul li to .nav-links li */
+    margin-left: 0; /* Ensures no extra margin interferes with justify-content */
+}
+
+/* Style for regular nav links (excluding buttons) */
+.nav-links li a:not(.nav-resume-btn) { /* Changed selector */
+    color: var(--text-color-light);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+    text-transform: none;
+}
+
+.nav-links li a:not(.nav-resume-btn)::after { /* Changed selector */
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-links li a:not(.nav-resume-btn):hover::after { /* Changed selector */
+    width: 100%;
+}
+
+/* --- Specific style for Resume button in Nav Bar (Unique Hover Effect) --- */
+.nav-resume-btn {
+    padding: 0.6em 1.2em; /* Slightly smaller padding for nav */
+    background-color: transparent;
+    border-radius: 6px;
+    border: .3px solid var(--btn-color); /* Uses the unique green color */
+    transition: .5s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 600;
+    font-size: 1rem; /* Slightly smaller font for nav */
+    font-family: var(--heading-font);
+    text-transform: uppercase;
+    color: var(--btn-color); /* Text color starts as unique green */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-resume-btn::after, .nav-resume-btn::before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: skew(90deg) translate(-50%, -50%);
+    position: absolute;
+    inset: 50%;
+    left: 25%;
+    z-index: -1;
+    transition: .5s ease-out;
+    background-color: var(--btn-color); /* Background of the sliding effect */
+}
+
+.nav-resume-btn::before {
+    top: -50%;
+    left: -25%;
+    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.nav-resume-btn:hover::before {
+    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.nav-resume-btn:hover::after {
+    transform: skew(45deg) translate(-50%, -50%);
+}
+
+.nav-resume-btn:hover {
+    color: var(--btn-color2); /* Text color changes on hover */
+}
+
+.nav-resume-btn:active {
+    filter: brightness(.7);
+    transform: scale(.98);
+}
+
+/* --- New Share Button Styles (from Uiverse.io by Mohammad-Rahme-576) --- */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    font-family: var(--body-font); /* Use your body font */
+    overflow: visible;
+}
+
+/* Button Styles */
+.button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    padding: 10px 20px; /* Adjusted padding for navbar fit */
+    border-radius: 50px;
+    cursor: pointer;
+    transition:
+        background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+        transform 0.3s ease,
+        box-shadow 0.4s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted shadow for navbar */
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.button-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        rgba(110, 142, 251, 0.4),
+        rgba(167, 119, 227, 0.4)
+    );
+    filter: blur(10px); /* Adjusted blur for navbar */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+}
+
+.button-content::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    transform: scale(0);
+    transition: transform 0.6s ease-out;
+    z-index: -1;
+}
+
+.button-content:hover::before {
+    opacity: 1;
+}
+
+.button-content:hover::after {
+    transform: scale(1);
+}
+
+.button-content:hover {
+    background: linear-gradient(135deg, #a777e3, #6e8efb);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Adjusted shadow for navbar */
+    transform: translateY(-2px) scale(1.02); /* Adjusted transform for navbar */
+}
+
+.button-content:active {
+    transform: translateY(-1px) scale(0.99); /* Adjusted transform for navbar */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Adjusted shadow for navbar */
+}
+
+.text {
+    font-size: 16px; /* Adjusted font size for navbar */
+    font-weight: 600;
+    margin-right: 8px; /* Adjusted margin */
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: letter-spacing 0.3s ease;
+}
+
+.button-content:hover .text {
+    letter-spacing: 0.5px; /* Adjusted letter spacing */
+}
+
+.share-icon {
+    fill: white;
+    transition:
+        transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        fill 0.3s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    width: 20px; /* Adjusted icon size for navbar */
+    height: 20px; /* Adjusted icon size for navbar */
+}
+
+.button-content:hover .share-icon {
+    transform: rotate(180deg) scale(1.05); /* Adjusted transform */
+    fill: #ffffff;
+}
+
+/* Tooltip Styles */
+.tooltip-content {
+    position: absolute;
+    top: 102%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: white;
+    border-radius: 15px;
+    padding: 18px; /* Adjusted padding */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        visibility 0.5s ease;
+    z-index: 100;
+    pointer-events: none;
+    backdrop-filter: blur(8px); /* Adjusted blur */
+    background: rgba(255, 255, 255, 0.9);
+    min-width: 200px; /* Ensure a minimum width */
+}
+
+.tooltip-container:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+    pointer-events: auto;
+}
+
+/* Social Icons Styles */
+.social-icons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Adjusted gap */
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Adjusted size */
+    height: 40px; /* Adjusted size */
+    border-radius: 50%;
+    background: #f0f0f0;
+    transition:
+        transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        background 0.3s ease,
+        box-shadow 0.4s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
+    opacity: 1;
+}
+
+.social-icon svg {
+    width: 20px; /* Adjusted size */
+    height: 20px; /* Adjusted size */
+    fill: #333;
+    transition:
+        transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        fill 0.3s ease;
+    z-index: 1;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.08); /* Adjusted transform */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); /* Adjusted shadow */
+}
+
+.social-icon:active {
+    transform: translateY(-1px) scale(1.03); /* Adjusted transform */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08); /* Adjusted shadow */
+}
+
+.social-icon:hover svg {
+    transform: scale(1.1); /* Adjusted scale */
+    fill: white;
+}
+
+.social-icon.twitter:hover {
+    background: linear-gradient(135deg, #1da1f2, #1a91da);
+}
+
+.social-icon.facebook:hover {
+    background: linear-gradient(135deg, #1877f2, #165ed0);
+}
+
+.social-icon.linkedin:hover {
+    background: linear-gradient(135deg, #0077b5, #005e94);
+}
+
+/* Animation for Pulse Effect */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(110, 142, 251, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(110, 142, 251, 0); /* Adjusted pulse size */
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(110, 142, 251, 0);
+    }
+}
+
+.button-content {
+    animation: pulse 3s infinite;
+}
+
+/* Hover Ripple Effect */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3); /* Adjusted ripple size */
+        opacity: 0;
+    }
+}
+
+.button-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: inherit;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.button-content:active::before {
+    animation: ripple 0.6s linear;
+}
+
+/* Tooltip Arrow */
+.tooltip-content::before {
+    content: "";
+    position: absolute;
+    top: -8px; /* Adjusted top for arrow */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 8px 8px 8px; /* Adjusted arrow size */
+    border-style: solid;
+    border-color: transparent transparent rgba(255, 255, 255, 0.9) transparent;
+    filter: drop-shadow(0 -2px 2px rgba(0, 0, 0, 0.08)); /* Adjusted shadow */
+}
+
+/* Accessibility */
+.button-content:focus {
+    outline: none;
+    box-shadow:
+        0 0 0 2px rgba(110, 142, 251, 0.5), /* Adjusted outline */
+        0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-content:focus:not(:focus-visible) {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Hero Section --- */
+#hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('hero-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px; /* Offset for fixed header */
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Hero Content (REVERTED TO ORIGINAL ALIGNMENT) --- */
+#hero .hero-content {
+    display: flex;
+    flex-direction: row; /* Default to row for larger screens */
+    justify-content: space-around; /* Distribute space */
+    align-items: center;
+    text-align: left; /* Align children content to their side */
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+    text-align: left;
+    padding-right: 20px;
+    /* Animation for the heading and text */
+    animation: slideInFromLeft 1s ease-out 0s 1;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    /* Animation for image */
+    animation: slideInFromRight 1.5s ease-out 0s 1;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 3px solid var(--primary-color);
+    opacity: 1;
+}
+
+/* New Keyframes for Image Animation */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Re-adjust heading and paragraph styles for the new text alignment */
+.hero-text h1 {
+    font-size: 4.5rem;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    text-align: left; /* Ensure it's left-aligned */
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.hero-text p {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 300;
+    text-align: left; /* Ensure it's left-aligned */
+}
+
+.hero-text .uiverse-btn {
+    margin-top: 20px;
+    align-self: flex-start; /* Align button to the left with text */
+}
+
+
+/* --- About Section (UPDATED) --- */
+#about .about-flex {
+    display: flex;
+    flex-direction: row; /* Keep row for larger screens */
+    align-items: center;
+    justify-content: center; /* Center content when no image */
+    text-align: left; /* Keep text aligned left */
+    margin-top: 40px;
+}
+
+#about .about-text {
+    flex: 1; /* Allow text to take full width */
+    max-width: 800px; /* Constrain max width for readability */
+    padding-right: 0; /* Remove right padding since no image */
+}
+
+#about .about-text p {
+    color: var(--text-color-light);
+    line-height: 1.8;
+    
+}
+
+/* --- Skills Section --- */
+#skills h2 {
+    color: var(--text-color-light);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.skill-item {
+    background: var(--light-bg);
+    padding: 35px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill-item:hover {
+    transform: translateY(-8px);
+    background: var(--primary-color);
+    color: var(--dark-bg);
+}
+
+.skill-item:hover i {
+    color: var(--dark-bg);
+}
+
+.skill-item:hover h3 {
+    color: var(--dark-bg);
+}
+
+
+.skill-item i {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.skill-item h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--text-color-light);
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+/* --- Portfolio Section --- */
+#portfolio h2 {
+    color: var(--text-color-light);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.portfolio-item {
+    background: var(--light-bg);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+    text-align: center;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-overlay h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.portfolio-overlay p {
+    color: var(--text-color-light);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+/* --- Contact Section --- */
+#contact h2 {
+    color: var(--text-color-light);
+}
+
+.contact-intro {
+    font-size: 1.2rem;
+    color: var(--text-color-light);
+    margin-bottom: 40px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--light-bg);
+    color: var(--text-color-light);
+    font-family: var(--body-font);
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--secondary-color);
+}
+
+.contact-form .btn {
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+.social-links {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.social-links a {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #0056b3;
+    transform: scale(1.1);
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--dark-bg);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* --- Switch Styles (from Uiverse.io by Galahhad) --- */
+.ui-switch {
+    /* switch */
+    --switch-bg: rgb(135, 150, 165);
+    --switch-width: 48px;
+    --switch-height: 20px;
+    /* circle */
+    --circle-diameter: 32px;
+    --circle-bg: rgb(0, 56, 146);
+    --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
+
+    /* Ensures the switch is aligned vertically with other nav items */
+    display: flex;
+    align-items: center;
+    height: 100%; /* Important for vertical alignment in flex container */
+}
+
+body.dark-mode .ui-switch {
+    --switch-bg: rgb(59, 70, 80); /* Darker switch background in dark mode */
+    --circle-bg: #82aaff; /* Lighter circle in dark mode */
+}
+
+
+.ui-switch input {
+    display: none;
+}
+
+.slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    background: var(--switch-bg);
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.slider .circle {
+    top: calc(var(--circle-inset) * -1);
+    left: 0;
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
+    position: absolute;
+    background: var(--circle-bg);
+    border-radius: inherit;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD05LjMwNSAxLjY2N1YzLjc1aDEuMzg5VjEuNjY3hC0xLjM5em0tNC43MDcgMS45NWwtLjk4Mi45ODJMNS4wOSA2LjA3MmwuOTgyLS45ODItMS40NzMtMS40NzN6TTEwLjgwMiAwTDEzLjkyNyA1LjA5bC45ODUuOTgyIDEuNDczLTEuNDczLS45ODItLjk4MnpNMTAgNS4xMzlhNC44NzIgNC44NzIgMCAwNC00Ljg2MiA0Ljg2QTQuNTcyIDAgNS4wODYgNC44NjYgMC0wIDAgMi41MjQgMTAgNC44NzIgMC0yLjUyNCA2LjQyMSAwLSBuNjU1IDMuMzk3LDEuMzg5IDExLjY2NSAOOTQwOS43MzA1djEuMzlhMi4wODN2LTEuMzlIMi42NjZ6TjkuNTM2IDkudjEuMzlhMi4wODR2LTEuMzlILTIuMDg0ek01LjA5IDEzLjkzMkwzLjYxNiAxNS40bC45ODUuOTgyIDEuNDczLTEuNDczLS45ODItLjk4MnptOS44MiAwbC0uOTgyLjk4MiAxLjQ3MyAxLjQ3My45ODItLjk4Mi0xLjQ3My0xLjQ3M3pNOS4zMDUgMTYuMjV2Mi4wODNoMS4zODlWMTYuMjVoLTEuMzl6IiAvPgo8L3N2Zz4=");
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background 0.3s ease;
+    -o-transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background 0.3s ease;
+    transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, background 0.3s ease;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+    ;
+}
+
+.slider .circle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: inherit;
+    -webkit-transition: all 500ms;
+    -o-transition: all 500ms;
+    transition: all 500ms;
+    opacity: 0;
+}
+
+/* actions */
+.ui-switch input:checked+.slider .circle {
+    left: calc(100% - var(--circle-diameter));
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVscC0uNyAxLjgtMS44LjcuNyAxLjguNi0xLjhsMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2.3IDAg11-6.2-6.6IDU.4IDAg00Ni42IDYuNnptLTEuNy0xLjVsLjcuNyAxLjgtLjcuNy0xLjgtLjYtMS45eiIvPgo8L3N2Zz4=");
+}
+
+.ui-switch input:active+.slider .circle::before {
+    -webkit-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s;
+    opacity: 1;
+    width: 0;
+    height: 0;
+}
+
+/* --- Responsive Design --- */
+@media (min-width: 993px) { /* Apply split layout on larger screens */
+    #hero .hero-content {
+        flex-direction: row; /* Text left, Image right */
+        text-align: left; /* Align children content to their side */
+        justify-content: space-around; /* Distribute space */
+    }
+    .hero-text {
+        text-align: left; /* Explicitly align text to left */
+    }
+    .hero-text h1,
+    .hero-text p {
+        text-align: left; /* Override previous centering */
+    }
+
+    #about .about-text {
+        flex: none; /* Reset flex */
+        max-width: 800px; /* Maintain max-width */
+        margin: 0 auto; /* Center text */
+        text-align: center; /* Center align about text on large screens after image removal */
+    }
+    #about .about-text p {
+        text-align: center; /* Ensure paragraphs are centered too */
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    .hero-content p {
+        font-size: 1.4rem;
+    }
+    #about .about-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    #about .about-text {
+        padding-right: 0;
+        max-width: 100%; /* Allow text to take full width */
+    }
+
+    /* Hero section for smaller screens (stacked) */
+    #hero .hero-content {
+        flex-direction: column; /* Stack text and image vertically */
+        text-align: center; /* Center content */
+        justify-content: center;
+    }
+    .hero-text {
+        order: 2; /* Text below image on small screens */
+        text-align: center;
+        padding-right: 0;
+        max-width: 100%;
+    }
+    .hero-text h1,
+    .hero-text p {
+        text-align: center;
+    }
+
+    .hero-text .uiverse-btn {
+        align-self: center; /* Center the button when content is stacked */
+    }
+
+    /* Adjust nav items for smaller screens */
+    .nav-links { /* Changed selector */
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: center;
+        width: 100%;
+        padding: 10px 0;
+        gap: 15px; /* Adjust gap for stacked items */
+        justify-content: center; /* Center items when stacked */
+    }
+
+    .nav-links li { /* Changed selector */
+        margin: 0; /* Remove specific li margins as gap handles it */
+    }
+    .nav-links li:has(.tooltip-container) { /* Changed selector */
+        margin: 0; /* Override any other margin for the share button li */
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+
+    #main-nav {
+        flex-direction: column;
+        padding-top: 15px;
+    }
+    #main-nav .logo {
+        margin-bottom: 15px;
+    }
+    .nav-links { /* Changed selector */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links li { /* Changed selector */
+        margin: 5px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .skills-grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-item {
+        max-width: 250px; /* Constrain width on small screens */
+        margin: 0 auto;
+    }
+
+    .contact-form {
+        margin: 0 15px;
+    }
+
+    .social-links {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .social-links a {
+        font-size: 2.2rem;
+    }
+
+    /* Responsive Design for Share Button within Navbar */
+    .button-content {
+        padding: 8px 16px;
+    }
+    .text {
+        font-size: 14px;
+    }
+    .share-icon {
+        width: 18px;
+        height: 18px;
+    }
+    .tooltip-content {
+        width: 220px; /* Adjust tooltip width for smaller screens */
+        padding: 15px;
+    }
+    .social-icon {
+        width: 36px;
+        height: 36px;
+    }
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .uiverse-btn, .btn { /* Ensure both buttons scale down */
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Responsive Design for Share Button within Navbar */
+    .button-content {
+        padding: 6px 12px;
+    }
+    .text {
+        font-size: 12px;
+        margin-right: 6px;
+    }
+    .share-icon {
+        width: 16px;
+        height: 16px;
+    }
+    .tooltip-content {
+        width: 180px; /* Further adjust tooltip width */
+        padding: 12px;
+    }
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+    .social-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Dark Mode Support for Share Button */
+@media (prefers-color-scheme: dark) {
+    .tooltip-content {
+        background: rgba(30, 30, 30, 0.9);
+        color: white;
+    }
+
+    .tooltip-content::before {
+        border-color: transparent transparent rgba(30, 30, 30, 0.9) transparent;
+    }
+
+    .social-icon {
+        background: #2a2a2a;
+    }
+
+    .social-icon svg {
+        fill: #e0e0e0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .tooltip-container {
+        display: none;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .button-content,
+    .share-icon,
+    .social-icon,
+    .tooltip-content {
+        transition: none !important; /* Force no transition */
+    }
+
+    .button-content {
+        animation: none !important; /* Force no animation */
+    }
+}
+
+/* Custom Scrollbar for Tooltip Content */
+.tooltip-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tooltip-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.tooltip-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+.tooltip-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* Wrapper Section */
+.internship-wrapper {
+  padding: 60px 20px;
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Container */
+.internship-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Heading */
+.internship-heading {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+/* Cards Layout */
+.internship-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Individual Card */
+.internship-card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.internship-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 255, 231, 0.2);
+}
+
+/* Text Styling */
+.internship-company {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #00d4ff;
+}
+
+.internship-duration {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.internship-details {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+/* Wrapper Section */
+.leadership-wrapper {
+  padding: 60px 20px;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Container */
+.leadership-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.leadership-heading {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* Club Name */
+.club-name {
+  font-size: 1.2rem;
+  color: #bbbbbb;
+  margin-bottom: 30px;
+}
+
+/* Achievement List */
+.achievement-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  text-align: left;
+  max-width: 700px;
+}
+
+/* List Items */
+.achievement-item {
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 25px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+.achievement-item::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: #00d4ff;
+  font-size: 1rem;
+}
+
+/* Highlight Title */
+.achievement-title {
+  font-weight: 600;
+  color: #00d4ff;
+}
+/* Scrollable Container */
+/* Scrollable container for certificate cards */
+.certificate-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 20px;
+}
+
+.certificate-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.certificate-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+/* Certificate Card */
+.certificate-card {
+  flex: 0 0 auto;
+  width: 250px;
+  background: var(--light-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.certificate-card:hover {
+  transform: translateY(-8px);
+  background: var(--primary-color);
+  color: var(--dark-bg);
+}
+
+.certificate-card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.certificate-card p {
+  font-size: 0.95rem;
+  margin: 0;
+  text-align: center;
+  color: var(--text-color-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+
+.certificate-card:hover p {
+  color: var(--dark-bg);
+}
+
+
