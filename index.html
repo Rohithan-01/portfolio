@@ -1,525 +1,526 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rohithan</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Rohithan</title>
+          <link rel="stylesheet" href="style.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+          <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    </head>
-    <body>
+      </head>
+      
+      
+                <body>
 
-        
-  <style>
-    /* Reset */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+          
+                  <style>
+                  /* Reset */
+                  * {
+                    margin: 0; padding: 0; box-sizing: border-box;
+                  }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: white;
-    }
+                  body {
+                    font-family: Arial, sans-serif;
+                    background-color: #111;
+                    color: white;
+                  }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background-color: #222;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+                  nav {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1rem 2rem;
+                    background-color: #222;
+                    position: sticky;
+                    top: 0;
+                    z-index: 1000;
+                  }
 
-    nav .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-      color: #fff;
-      text-decoration: none;
-    }
+                  nav .logo {
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    color: #fff;
+                    text-decoration: none;
+                  }
 
-    ul.nav-links {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
+                  ul.nav-links {
+                    list-style: none;
+                    display: flex;
+                    gap: 1.5rem;
+                  }
 
-    ul.nav-links li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+                  ul.nav-links li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: color 0.3s;
+                  }
 
-    ul.nav-links li a:hover {
-      color: #f39c12;
-    }
+                  ul.nav-links li a:hover {
+                    color: #f39c12;
+                  }
 
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      font-size: 1.8rem;
-      user-select: none;
-    }
+                  /* Hamburger Menu */
+                  .hamburger {
+                    display: none;
+                    cursor: pointer;
+                    font-size: 1.8rem;
+                    user-select: none;
+                  }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      ul.nav-links {
-        position: absolute;
-        top: 60px; /* height of nav */
-        right: 0;
-        background-color: #222;
-        flex-direction: column;
-        width: 100%;
-        display: none;
-        padding: 1rem 2rem;
-      }
+                  /* Responsive */
+                  @media (max-width: 768px) {
+                    ul.nav-links {
+                      position: absolute;
+                      top: 60px; /* height of nav */
+                      right: 0;
+                      background-color: #222;
+                      flex-direction: column;
+                      width: 100%;
+                      display: none;
+                      padding: 1rem 2rem;
+                    }
 
-      ul.nav-links.show {
-        display: flex;
-      }
+                    ul.nav-links.show {
+                      display: flex;
+                    }
 
-      .hamburger {
-        display: block;
-        color: white;
-      }
-    }
+                    .hamburger {
+                      display: block;
+                      color: white;
+                    }
+                  }
+                </style>
+                      
+              <nav>
+                <a href="#" class="logo">PORTFOLIO</a>
+
+                <div class="hamburger" id="hamburger">&#9776;</div>
+
+                <ul class="nav-links" id="navLinks">
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#skills">Skills</a></li>
+                  <li><a href="#project">Project</a></li>
+                  <li><a href="#Certificate">Certificate</a></li>
+                  <li><a href="#Intern">Internship</a></li>
+                  <li><a href="#Achivement">Achievement</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="RESUME.pdf" target="_blank" class="nav-resume-btn">Resume</a></li>
+                </ul>
+              </nav>
+
+              <script>
+              const hamburger = document.getElementById('hamburger');
+              const navLinks = document.getElementById('navLinks');
+
+              hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('show');
+              });
+
+              const navLinkItems = navLinks.querySelectorAll('a');
+              navLinkItems.forEach(link => {
+                link.addEventListener('click', () => {
+                  if (navLinks.classList.contains('show')) {
+                    navLinks.classList.remove('show');
+                  }
+                });
+              });
+              
+            </script>
+
+  </body>
+  </html>
+
+          </header>
+
+          <main>
+              <section id="hero" class="section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Hi, I'm <span class="highlight">Rohithan P.D</span></h1>
+          <p>MERN Stack Developer | AI/ML Enthusiast | Mentor & Team Leader</p>
+          <a href="#project" class="uiverse-btn">
+            View My Work
+          </a>
+        </div>
+        <div class="hero-image">
+          <img src="123.png" alt="Rohithan Portrait" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="about" class="section bg-dark">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-flex">
+        <div class="about-text">
+          <p>I am currently pursuing a Bachelor of Engineering in Electronics and Communication Engineering at Sri Krishna College of Engineering and Technology, Coimbatore, graduating in 2026. I build dynamic and responsive web applications using modern front-end technologies like <strong>HTML, CSS, JavaScript</strong>, and frameworks such as <strong>React</strong>. On the back end, I work with <strong>Node.js</strong> and databases like <strong>MongoDB</strong> to create efficient and scalable solutions.</p>
+
+          <p>In addition to software development, I have hands-on experience with hardware technologies including microcontrollers, embedded systems, and circuit design, which complements my engineering background.</p>
+
+          <p>My skills include problem-solving, debugging, and collaborating effectively in team environments. I am passionate about quickly learning new tools and technologies to stay ahead in the fast-paced world of web development and electronics.</p>
+
+          <p>As a fast learner, I adapt easily to new challenges, which helps me deliver quality results on complex projects. I enjoy turning ideas into real products and constantly seek opportunities to innovate and grow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+              
+          
+
+
+              <section id="skills" class="section">
+                  <div class="container">
+                      <h2> My Skills</h2>
+                      <div class="skills-grid">
+                          <div class="skill-item">
+                              <i class="fab fa-html5"></i>
+                              <h3>HTML5</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fab fa-css3-alt"></i>
+                              <h3>CSS3</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fab fa-js"></i>
+                              <h3>JavaScript</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fab fa-react"></i>
+                              <h3>React</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fab fa-node-js"></i>
+                              <h3>Node.js</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fas fa-database"></i>
+                              <h3>Databases (SQL/NoSQL)</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fab fa-git-alt"></i>
+                              <h3>Git & GitHub</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fab fa-bootstrap"></i>
+                              <h3>Bootstrap</h3>
+                          </div>
+                          <div class="skill-item">
+                              <i class="fas fa-brain"></i>
+                              <h3>AI / ML</h3>
+                          </div>
+                          <div class="skill-item">
+                                  <i class="fas fa-microchip"></i>
+                                  <h3>Arduino</h3>
+                          </div>
+
+                              <div class="skill-item">
+                                  <i class="fas fa-microchip"></i>
+                                  <h3>Raspberry Pi</h3>
+                              </div>
+
+                              <div class="skill-item">
+                              <i class="fas fa-code"></i>
+                                  <h3>Spyder (IDE)</h3>
+                              </div>
+
+                              <div class="skill-item">
+                                  <i class="fas fa-cogs"></i>
+                                  <h3>Embedded Systems</h3>
+                              </div>
+
+                              <div class="skill-item">
+                                  <i class="fas fa-puzzle-piece"></i>
+                                  <h3>Problem Solving</h3>
+                              </div>
+
+                              <div class="skill-item">
+                                  <i class="fas fa-users"></i>
+                                  <h3>Interpersonal Skills</h3>
+                                </div>
+                              <div class="skill-item">
+                                <i class="fas fa-pencil-ruler"></i>  <!-- UI/UX related icon -->
+                                <h3>UI/UX Designer</h3>
+                              </div>
+    
+                        
+
+
+                              <div class="skill-item">
+                              <i class="fas fa-helicopter"></i>
+                              <h3>Drone Designer</h3>
+                              </div>
+
+
+                      </div>
+                  </div>
+              </section>
+
+              <section id="project" class="section bg-dark">
+                  <div class="container">
+                      <h2>My Recent Work</h2>
+                      <div class="portfolio-grid">
+                          <div class="portfolio-item">
+                              <img src="p1.jpg" alt="Project 1">
+                              <div class="portfolio-overlay">
+                                  <h3>Pet Adoption Platform</h3>
+                                  <p>Built a MERN stack-based web application for pet adoption as part of a collaborative team project.</p>
+                                  <a href="https://github.com/Rohithan-01/petadoption" class="btn-small">View Project</a>
+                              </div>
+                          </div>
+                          <div class="portfolio-item">
+                              <img src="P2.jpg" alt="Project 2">
+                              <div class="portfolio-overlay">
+                                  <h3>Automatic Rover</h3>
+                                  <p>Presenting my first automatic rover in its advanced form – a fusion of innovation and intelligent mobility</p>
+                                  <a href="https://github.com/Rohithan-01/Automatic-rover.git" class="btn-small">View Project</a>
+                              </div>
+                          </div>
+                          <div class="portfolio-item">
+                              <img src="P3.jpg" alt="Project 3">
+                              <div class="portfolio-overlay">
+                                  <h3>Silent Eye</h3>
+                                  <p>Silent Eye is a surveillance and security software used for monitoring user activity on computers, often in stealth mode.</p>
+                                  <a href="https://github.com/Rohithan-01/Silent-eye.git" class="btn-small">View Project</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+              
+            <section id="Certificate" class="section bg-dark">
+    <div class="container">
+      <h2>My Certificates</h2>
+      <div class="certificate-scroll-container">
+        <div class="certificate-card">
+          <img src="c1.jpg" alt="Certificate 1" />
+          <p>Linux Training - IIT Bombay</p>
+        </div>
+        <div class="certificate-card">
+          <img src="c2.jpg" alt="Certificate 2" />
+          <p>Coumputer vision-Mathworks</p>
+        </div>
+        <div class="certificate-card">
+          <img src="c3.jpg" alt="Certificate 3" />
+          <p>Leadership Skills-Coursera</p>
+        </div>
+        <div class="certificate-card">
+          <img src="c4.jpg" alt="Certificate 4" />
+          <p>Analytical Modeler-Bently</p>
+        </div>
+        <div class="certificate-card">
+          <img src="c5.jpg" alt="Certificate 5" />
+          <p>Cybersecurity - CISCO</p>
+        </div>
+        <!-- Add more certificate cards here -->
+      </div>
+    </div>
+  </section>
+
+
+
+              <section id="Intern" class="internship-wrapper">
+                      <div class="internship-container">
+                          <h2 class="internship-heading">Internship</h2>
+              
+                          <div class="internship-cards">
+              
+                              <!-- Card 1 -->
+                              <div class="internship-card">
+                              <h3 class="internship-company">Salzer Technologies</h3>
+                              <p class="internship-duration"><strong>Duration:</strong> 2 Months</p>
+                              <p class="internship-details">
+                                  Worked in the Machinery Management and Analysis department, focusing on real-time data collection, optimization, and enhancing machinery operational efficiency.
+                              </p>
+                          </div>
+
+                          <!-- Card 2 -->
+                          <div class="internship-card">
+                              <h3 class="internship-company">Nitro Technology</h3>
+                              <p class="internship-duration"><strong>Duration:</strong> 1 Month</p>
+                              <p class="internship-details">
+                              Trained in embedded systems including microcontroller programming, basic IoT implementation, and circuit analysis with real-time project applications.
+                              </p>
+                          </div>
+                              </div>
+                              </div>
+              </section>
+              <section id="Achivement" class="leadership-wrapper">
+                  <div class="leadership-container">
+                <h2 class="leadership-heading">Achievements</h2>
+                <p class="club-name">President & Mentor of <strong>NOVARD</strong> Club</p>
+              
+                <ul class="achievement-list">
+                <li class="achievement-item">
+                  <span class="achievement-title">IEEE Xtreme 24.0 Coordinator</span> – Successfully led 5 teams into the global top 100 in this 24-hour international coding event.
+                </li>
+              <li class="achievement-item">
+                  <span class="achievement-title">National Symposium Coordinator</span> – Orchestrated the national-level event <strong>Wings and Wheels</strong>, boosting participation and innovation.
+              </li>
+                  <li class="achievement-item">
+                  <span class="achievement-title">District Handball Champion (U14)</span> – Won the district championship in 2017, showcasing athletic and team leadership.
+                  </li>
+                  </ul>
+                  </div>
+              </section>
+
+
+
+              <section id="contact" class="section">
+    <div class="container">
+      <h2>Get In Touch</h2>
+      <p class="contact-intro">Whether you're looking to collaborate or have a role to fill, I'm open to exciting opportunities—let's connect!</p>
+
+    <form id="contactForm"><style>
+    /* Container for the form */
+  #contactForm {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #222; /* dark background */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Inputs and textarea styling */
+  #contactForm input[type="text"],
+  #contactForm input[type="email"],
+  #contactForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #333;
+    color: #eee;
+    font-size: 1rem;
+    resize: vertical;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Input focus effect */
+  #contactForm input[type="text"]:focus,
+  #contactForm input[type="email"]:focus,
+  #contactForm textarea:focus {
+    background-color: #444;
+    outline: none;
+  }
+
+  /* Button styling */
+  #contactForm button.btn {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Button hover effect */
+  #contactForm button.btn:hover {
+    background-color: #45a049;
+  }
+
+  /* Response message styling */
+  #responseMessage {
+    max-width: 400px;
+    margin: 15px auto;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #4caf50; /* green by default */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Style error messages differently */
+  #responseMessage.error {
+    color: #ff4c4c; /* red */
+  }
+
   </style>
-</head>
-<body>
-  <nav>
-    <a href="#" class="logo">PORTFOLIO</a>
 
-    <div class="hamburger" id="hamburger">&#9776;</div>
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+  </form>
 
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#project">Project</a></li>
-      <li><a href="#Certificate">Certificate</a></li>
-      <li><a href="#Intern">Internship</a></li>
-      <li><a href="#Achivement">Achievement</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="RESUME.pdf" target="_blank" class="nav-resume-btn">Resume</a></li>
-    </ul>
-  </nav>
+  <div id="responseMessage"></div>
 
   <script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+    const form = document.getElementById('contactForm');
+    const responseMessage = document.getElementById('responseMessage');
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-  const navLinkItems = navLinks.querySelectorAll('a');
-  navLinkItems.forEach(link => {
-    link.addEventListener('click', () => {
-      if (navLinks.classList.contains('show')) {
-        navLinks.classList.remove('show');
+      const formData = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value,
+      };
+
+      try {
+        const response = await fetch('http://localhost:5000/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          responseMessage.textContent = "Message sent successfully!";
+          form.reset();
+        } else {
+          responseMessage.textContent = "Failed to send message.";
+        }
+      } catch (error) {
+        responseMessage.textContent = "Error sending message.";
       }
     });
-  });
-  
-</script>
+  </script>
 
-</body>
-</html>
 
-        </header>
-
-        <main>
-            <section id="hero" class="section">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>Hi, I'm <span class="highlight">Rohithan P.D</span></h1>
-        <p>MERN Stack Developer | AI/ML Enthusiast | Mentor & Team Leader</p>
-        <a href="#project" class="uiverse-btn">
-          View My Work
-        </a>
-      </div>
-      <div class="hero-image">
-        <img src="123.png" alt="Rohithan Portrait" />
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/rohithan-pd-98a905255/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Rohithan-01" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:rohithanpd@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+918148341305" target="_blank"><i class="fas fa-phone-alt"></i></a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+          </main>
 
-<section id="about" class="section bg-dark">
-  <div class="container">
-    <h2>About Me</h2>
-    <div class="about-flex">
-      <div class="about-text">
-        <p>I am currently pursuing a Bachelor of Engineering in Electronics and Communication Engineering at Sri Krishna College of Engineering and Technology, Coimbatore, graduating in 2026. I build dynamic and responsive web applications using modern front-end technologies like <strong>HTML, CSS, JavaScript</strong>, and frameworks such as <strong>React</strong>. On the back end, I work with <strong>Node.js</strong> and databases like <strong>MongoDB</strong> to create efficient and scalable solutions.</p>
+          <footer>
+              <div class="container">
+                  <p> I'M A POLYMIND 🤵‍♂️</p>
+              </div>
+          </footer>
 
-        <p>In addition to software development, I have hands-on experience with hardware technologies including microcontrollers, embedded systems, and circuit design, which complements my engineering background.</p>
+          <script>
+          
+              const darkModeToggle = document.getElementById('darkModeToggle');
+              darkModeToggle.addEventListener('change', () => {
+                  document.body.classList.toggle('dark-mode');
+              });
 
-        <p>My skills include problem-solving, debugging, and collaborating effectively in team environments. I am passionate about quickly learning new tools and technologies to stay ahead in the fast-paced world of web development and electronics.</p>
-
-        <p>As a fast learner, I adapt easily to new challenges, which helps me deliver quality results on complex projects. I enjoy turning ideas into real products and constantly seek opportunities to innovate and grow.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-            
-        
-
-
-            <section id="skills" class="section">
-                <div class="container">
-                    <h2> My Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <h3>HTML5</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <h3>CSS3</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-js"></i>
-                            <h3>JavaScript</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <h3>React</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <h3>Node.js</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <h3>Databases (SQL/NoSQL)</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <h3>Git & GitHub</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-bootstrap"></i>
-                            <h3>Bootstrap</h3>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-brain"></i>
-                            <h3>AI / ML</h3>
-                        </div>
-                        <div class="skill-item">
-                                <i class="fas fa-microchip"></i>
-                                <h3>Arduino</h3>
-                        </div>
-
-                            <div class="skill-item">
-                                <i class="fas fa-microchip"></i>
-                                <h3>Raspberry Pi</h3>
-                            </div>
-
-                            <div class="skill-item">
-                             <i class="fas fa-code"></i>
-                                <h3>Spyder (IDE)</h3>
-                            </div>
-
-                             <div class="skill-item">
-                                <i class="fas fa-cogs"></i>
-                                <h3>Embedded Systems</h3>
-                             </div>
-
-                            <div class="skill-item">
-                                <i class="fas fa-puzzle-piece"></i>
-                                <h3>Problem Solving</h3>
-                            </div>
-
-                            <div class="skill-item">
-                                <i class="fas fa-users"></i>
-                                <h3>Interpersonal Skills</h3>
-                              </div>
-                            <div class="skill-item">
-                              <i class="fas fa-pencil-ruler"></i>  <!-- UI/UX related icon -->
-                              <h3>UI/UX Designer</h3>
-                            </div>
-  
-                       
-
-
-                            <div class="skill-item">
-                            <i class="fas fa-helicopter"></i>
-                            <h3>Drone Designer</h3>
-                            </div>
-
-
-                    </div>
-                </div>
-            </section>
-
-            <section id="project" class="section bg-dark">
-                <div class="container">
-                    <h2>My Recent Work</h2>
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <img src="p1.jpg" alt="Project 1">
-                            <div class="portfolio-overlay">
-                                <h3>Pet Adoption Platform</h3>
-                                <p>Built a MERN stack-based web application for pet adoption as part of a collaborative team project.</p>
-                                <a href="https://github.com/Rohithan-01/petadoption" class="btn-small">View Project</a>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <img src="P2.jpg" alt="Project 2">
-                            <div class="portfolio-overlay">
-                                <h3>Automatic Rover</h3>
-                                <p>Presenting my first automatic rover in its advanced form – a fusion of innovation and intelligent mobility</p>
-                                <a href="https://github.com/Rohithan-01/Automatic-rover.git" class="btn-small">View Project</a>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <img src="P3.jpg" alt="Project 3">
-                            <div class="portfolio-overlay">
-                                <h3>Silent Eye</h3>
-                                <p>Silent Eye is a surveillance and security software used for monitoring user activity on computers, often in stealth mode.</p>
-                                <a href="https://github.com/Rohithan-01/Silent-eye.git" class="btn-small">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-           <section id="Certificate" class="section bg-dark">
-  <div class="container">
-    <h2>My Certificates</h2>
-    <div class="certificate-scroll-container">
-      <div class="certificate-card">
-        <img src="c1.jpg" alt="Certificate 1" />
-        <p>Linux Training - IIT Bombay</p>
-      </div>
-      <div class="certificate-card">
-        <img src="c2.jpg" alt="Certificate 2" />
-        <p>Coumputer vision-Mathworks</p>
-      </div>
-      <div class="certificate-card">
-        <img src="c3.jpg" alt="Certificate 3" />
-        <p>Leadership Skills-Coursera</p>
-      </div>
-      <div class="certificate-card">
-        <img src="c4.jpg" alt="Certificate 4" />
-        <p>Analytical Modeler-Bently</p>
-      </div>
-      <div class="certificate-card">
-        <img src="c5.jpg" alt="Certificate 5" />
-        <p>Cybersecurity - CISCO</p>
-      </div>
-      <!-- Add more certificate cards here -->
-    </div>
-  </div>
-</section>
-
-
-
-            <section id="Intern" class="internship-wrapper">
-                    <div class="internship-container">
-                        <h2 class="internship-heading">Internship</h2>
-            
-                        <div class="internship-cards">
-            
-                            <!-- Card 1 -->
-                            <div class="internship-card">
-                            <h3 class="internship-company">Salzer Technologies</h3>
-                            <p class="internship-duration"><strong>Duration:</strong> 2 Months</p>
-                            <p class="internship-details">
-                                Worked in the Machinery Management and Analysis department, focusing on real-time data collection, optimization, and enhancing machinery operational efficiency.
-                            </p>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="internship-card">
-                            <h3 class="internship-company">Nitro Technology</h3>
-                            <p class="internship-duration"><strong>Duration:</strong> 1 Month</p>
-                            <p class="internship-details">
-                            Trained in embedded systems including microcontroller programming, basic IoT implementation, and circuit analysis with real-time project applications.
-                            </p>
-                        </div>
-                            </div>
-                            </div>
-            </section>
-            <section id="Achivement" class="leadership-wrapper">
-                <div class="leadership-container">
-               <h2 class="leadership-heading">Achievements</h2>
-               <p class="club-name">President & Mentor of <strong>NOVARD</strong> Club</p>
-            
-               <ul class="achievement-list">
-              <li class="achievement-item">
-                <span class="achievement-title">IEEE Xtreme 24.0 Coordinator</span> – Successfully led 5 teams into the global top 100 in this 24-hour international coding event.
-              </li>
-             <li class="achievement-item">
-                <span class="achievement-title">National Symposium Coordinator</span> – Orchestrated the national-level event <strong>Wings and Wheels</strong>, boosting participation and innovation.
-             </li>
-                <li class="achievement-item">
-                <span class="achievement-title">District Handball Champion (U14)</span> – Won the district championship in 2017, showcasing athletic and team leadership.
-                </li>
-                </ul>
-                </div>
-            </section>
-
-
-
-            <section id="contact" class="section">
-  <div class="container">
-    <h2>Get In Touch</h2>
-    <p class="contact-intro">Whether you're looking to collaborate or have a role to fill, I'm open to exciting opportunities—let's connect!</p>
-
-   <form id="contactForm"><style>
-  /* Container for the form */
-#contactForm {
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 25px;
-  background: #222; /* dark background */
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Inputs and textarea styling */
-#contactForm input[type="text"],
-#contactForm input[type="email"],
-#contactForm textarea {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 6px;
-  background-color: #333;
-  color: #eee;
-  font-size: 1rem;
-  resize: vertical;
-  transition: background-color 0.3s ease;
-}
-
-/* Input focus effect */
-#contactForm input[type="text"]:focus,
-#contactForm input[type="email"]:focus,
-#contactForm textarea:focus {
-  background-color: #444;
-  outline: none;
-}
-
-/* Button styling */
-#contactForm button.btn {
-  width: 100%;
-  padding: 12px 15px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-/* Button hover effect */
-#contactForm button.btn:hover {
-  background-color: #45a049;
-}
-
-/* Response message styling */
-#responseMessage {
-  max-width: 400px;
-  margin: 15px auto;
-  font-weight: 600;
-  text-align: center;
-  font-size: 1.1rem;
-  color: #4caf50; /* green by default */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Style error messages differently */
-#responseMessage.error {
-  color: #ff4c4c; /* red */
-}
-
-</style>
-
-  <input type="text" name="name" placeholder="Your Name" required />
-  <input type="email" name="email" placeholder="Your Email" required />
-  <textarea name="message" placeholder="Your Message" required></textarea>
-  <button type="submit" class="btn">Send Message</button>
-</form>
-
-<div id="responseMessage"></div>
-
-<script>
-  const form = document.getElementById('contactForm');
-  const responseMessage = document.getElementById('responseMessage');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = {
-      name: form.name.value,
-      email: form.email.value,
-      message: form.message.value,
-    };
-
-    try {
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        responseMessage.textContent = "Message sent successfully!";
-        form.reset();
-      } else {
-        responseMessage.textContent = "Failed to send message.";
-      }
-    } catch (error) {
-      responseMessage.textContent = "Error sending message.";
-    }
-  });
-</script>
-
-
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/rohithan-pd-98a905255/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/Rohithan-01" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="mailto:rohithanpd@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+918148341305" target="_blank"><i class="fas fa-phone-alt"></i></a>
-    </div>
-  </div>
-</section>
-
-        </main>
-
-        <footer>
-            <div class="container">
-                <p> I'M A POLYMIND 🤵‍♂️</p>
-            </div>
-        </footer>
-
-        <script>
-        
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            darkModeToggle.addEventListener('change', () => {
-                document.body.classList.toggle('dark-mode');
-            });
-
-            // Optional: Set initial dark mode based on user preference
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // document.body.classList.add('dark-mode'); // Uncomment to auto-enable dark mode
-                // darkModeToggle.checked = true; // Uncomment to set toggle to checked
-            }
-        </script>
-    </body>
-    </html>
+              // Optional: Set initial dark mode based on user preference
+              if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  // document.body.classList.add('dark-mode'); // Uncomment to auto-enable dark mode
+                  // darkModeToggle.checked = true; // Uncomment to set toggle to checked
+              }
+          </script>
+      </body>
+      </html>
