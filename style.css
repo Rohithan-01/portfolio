@@ -1469,5 +1469,71 @@ body.dark-mode .ui-switch {
 .certificate-card:hover p {
   color: var(--dark-bg);
 }
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;  /* Important for responsiveness */
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-text, .hero-image {
+  flex: 1 1 300px; /* Flexible layout */
+}
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Example: change header/nav background in dark mode */
+body.dark-mode header {
+  background-color: #1f1f1f;
+}
+
+/* Toggle Switch styling */
+.ui-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.ui-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider .circle {
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider .circle {
+  transform: translateX(26px);
+}
 
 
